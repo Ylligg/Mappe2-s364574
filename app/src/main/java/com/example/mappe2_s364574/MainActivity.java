@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +54,21 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupMøter();
+
+        DateFormat dato = new SimpleDateFormat("dd.MM.yyyy");
+        Collections.sort(møter, new Comparator<Avtale>() {
+            @Override
+            public int compare(Avtale o1, Avtale o2) {
+
+                try {
+                     int datoSort = dato.parse(o1.datoforMøte).compareTo(dato.parse(o2.datoforMøte));
+                    return datoSort;
+                } catch (ParseException e) {
+                    throw new IllegalArgumentException(e);
+                }
+            }
+        });
+
 
         Møte_adapter adapter = new Møte_adapter(this, møter);
 
