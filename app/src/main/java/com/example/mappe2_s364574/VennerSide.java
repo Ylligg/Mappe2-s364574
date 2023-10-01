@@ -3,11 +3,16 @@ package com.example.mappe2_s364574;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.LocaleListCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -16,6 +21,8 @@ import java.util.Comparator;
 
 public class VennerSide extends AppCompatActivity {
     ArrayList<Venner> venner = new ArrayList<>();
+    int i =0;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,10 +42,21 @@ public class VennerSide extends AppCompatActivity {
             }
         });
 
-        Venner_adapter adapter = new Venner_adapter(VennerSide.this, venner);
-
-        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(VennerSide.this));
+        Venner_adapter adapter = new Venner_adapter(VennerSide.this, venner);
+        recyclerView.setAdapter(adapter);
+
+        Button add = findViewById(R.id.add);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                venner.add(new Venner("Han"+i, "134245525"+i));
+                i+=1;
+                adapter.notifyItemInserted(venner.size() -1);
+            }
+        });
+
 
     }
 
@@ -52,6 +70,8 @@ public class VennerSide extends AppCompatActivity {
                     telfonnr[i]));
         }
     }
+
+
 
 
 }
