@@ -60,8 +60,8 @@ public class AddVennerSide extends AppCompatActivity {
 
                 if (!navntxt.isEmpty() && !tlftxt.isEmpty()) {
                     Venner venn = dataKilde.leggInnVenn(navntxt, tlftxt);
-                    Intent intent = new Intent(AddVennerSide.this, VennerSide.class);
-                    startActivity(intent);
+                    finish();
+
                 }
 
 

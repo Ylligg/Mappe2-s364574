@@ -16,6 +16,7 @@ import java.util.List;
 public class OppdaterVenner extends AppCompatActivity {
     public DataKildeVenner dataKilde;
     private List<Venner> vennerliste;
+    private Venner_adapter adapter;
 
     long id =0;
     @Override
@@ -46,14 +47,10 @@ public class OppdaterVenner extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dataKilde.updateVenn(id, navn.getText().toString(), tlf.getText().toString());
-                Intent intent = new Intent(OppdaterVenner.this, VennerSide.class);
-                startActivity(intent);
+                dataKilde.finnAlleVenner();
+                adapter.notifyItemChanged((int) id);
+                finish();
             }
         });
-
-
-
-
-
     }
 }

@@ -73,7 +73,6 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
             tlf = itemView.findViewById(R.id.tlfnr);
 
 
-
             itemView.findViewById(R.id.slett).setOnClickListener(View -> {
 
                 new AlertDialog.Builder(adapter.context)
@@ -115,6 +114,7 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
                                 Intent intent = new Intent(adapter.context, OppdaterVenner.class);
                                 intent.putExtra("id",adapter.venner.get(getAdapterPosition()).getId());
                                 adapter.context.startActivity(intent);
+
                             }
                         })
                         .setNegativeButton("Nei", new DialogInterface.OnClickListener() {
