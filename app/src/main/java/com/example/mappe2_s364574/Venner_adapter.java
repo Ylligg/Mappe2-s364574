@@ -17,12 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHolder>{
     Context context;
-
-    ArrayList<Venner> venner;
-    public Venner_adapter(Context context, ArrayList<Venner> venner){
+    List<Venner> venner;
+    public Venner_adapter(Context context, List<Venner> venner){
         this.context = context;
         this.venner = venner;
     }

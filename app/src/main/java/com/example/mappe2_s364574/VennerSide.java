@@ -5,10 +5,15 @@ package com.example.mappe2_s364574;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.os.LocaleListCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +25,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class VennerSide extends AppCompatActivity {
-    ArrayList<Venner> venner = new ArrayList<>();
+    public ArrayList<Venner> venner = new ArrayList<>();
     int i =0;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -29,8 +34,7 @@ public class VennerSide extends AppCompatActivity {
         setContentView(R.layout.activity_venner_side);
 
         RecyclerView recyclerView = findViewById(R.id.rcvenner);
-
-
+        Button add = findViewById(R.id.add);
 
         setupVenner();
 
@@ -46,18 +50,21 @@ public class VennerSide extends AppCompatActivity {
         Venner_adapter adapter = new Venner_adapter(VennerSide.this, venner);
         recyclerView.setAdapter(adapter);
 
-        Button add = findViewById(R.id.add);
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                venner.add(new Venner("Han"+i, "134245525"+i));
+                openAddVenner();
+                venner.add(new Venner("navn", "tlf"+i));
                 i+=1;
                 adapter.notifyItemInserted(venner.size() -1);
             }
         });
 
 
+    }
+    public void openAddVenner() {
+        Intent intent = new Intent(VennerSide.this, addVennerSide.class);
+        startActivity(intent);
     }
 
     private void setupVenner(){
@@ -70,8 +77,5 @@ public class VennerSide extends AppCompatActivity {
                     telfonnr[i]));
         }
     }
-
-
-
 
 }
