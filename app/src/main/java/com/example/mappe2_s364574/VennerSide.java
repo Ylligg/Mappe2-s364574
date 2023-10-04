@@ -33,6 +33,7 @@ public class VennerSide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_venner_side);
 
+
         RecyclerView recyclerView = findViewById(R.id.rcvenner);
         Button add = findViewById(R.id.add);
 
@@ -53,6 +54,7 @@ public class VennerSide extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(VennerSide.this));
         Venner_adapter adapter = new Venner_adapter(VennerSide.this, vennerliste);
         recyclerView.setAdapter(adapter);
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +79,12 @@ public class VennerSide extends AppCompatActivity {
 
     public void openAddVenner() {
         Intent intent = new Intent(VennerSide.this, AddVennerSide.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(VennerSide.this, MainActivity.class);
         startActivity(intent);
     }
 

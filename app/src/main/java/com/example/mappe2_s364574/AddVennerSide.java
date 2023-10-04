@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,8 @@ public class AddVennerSide extends AppCompatActivity {
     private ArrayAdapter<Venner> vennerArrayAdapter;
     private EditText oppgaveEditText;
     private List<Venner> vennerliste;
+
+    private Venner_adapter adapter;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +64,9 @@ public class AddVennerSide extends AppCompatActivity {
 
                 if (!navntxt.isEmpty() && !tlftxt.isEmpty()) {
                     Venner venn = dataKilde.leggInnVenn(navntxt, tlftxt);
-                    finish();
-
+                    Intent intent = new Intent(AddVennerSide.this, VennerSide.class);
+                    startActivity(intent);
                 }
-
-
-
 
             }
         });

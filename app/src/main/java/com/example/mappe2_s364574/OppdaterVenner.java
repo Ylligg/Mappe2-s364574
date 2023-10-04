@@ -2,6 +2,7 @@ package com.example.mappe2_s364574;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -44,12 +45,12 @@ public class OppdaterVenner extends AppCompatActivity {
         }
 
         oppdaterknapp.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
                 dataKilde.updateVenn(id, navn.getText().toString(), tlf.getText().toString());
-                dataKilde.finnAlleVenner();
-                adapter.notifyItemChanged((int) id);
-                finish();
+                Intent intent = new Intent(OppdaterVenner.this, VennerSide.class);
+                startActivity(intent);
             }
         });
     }

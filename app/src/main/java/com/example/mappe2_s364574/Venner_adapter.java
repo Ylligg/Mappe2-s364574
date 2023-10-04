@@ -28,9 +28,6 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
     public static DataKildeVenner dataKilde;
     List<Venner> venner;
 
-   ;
-
-
 
     public Venner_adapter(Context context, List<Venner> venner){
         this.context = context;
@@ -113,6 +110,7 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(adapter.context, OppdaterVenner.class);
                                 intent.putExtra("id",adapter.venner.get(getAdapterPosition()).getId());
+                                adapter.notifyItemChanged(getAdapterPosition());
                                 adapter.context.startActivity(intent);
 
                             }
