@@ -25,7 +25,6 @@ public class Venner {
         this.telefonnummer = telefonnummer;
     }
 
-
     public long getId() {
         return id;
     }

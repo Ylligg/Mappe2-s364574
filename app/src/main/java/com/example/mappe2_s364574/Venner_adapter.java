@@ -2,6 +2,8 @@ package com.example.mappe2_s364574;
 
 import static android.content.Intent.getIntent;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,6 +11,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +24,14 @@ import java.util.List;
 
 public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHolder>{
     Context context;
+
+    public static DataKildeVenner dataKilde;
     List<Venner> venner;
+
+   ;
+
+
+
     public Venner_adapter(Context context, List<Venner> venner){
         this.context = context;
         this.venner = venner;
@@ -31,6 +41,7 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_view_row_venner, parent, false);
+
         return new MyViewHolder(view).linkAdpater(this);
     }
 
@@ -50,11 +61,19 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
         TextView navn,tlf;
         private Venner_adapter adapter;
 
+        long vennid=0;
+        String vennNavn, venntlfnr;
+
+
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             navn = itemView.findViewById(R.id.navn);
             tlf = itemView.findViewById(R.id.tlfnr);
+
+
+
             itemView.findViewById(R.id.slett).setOnClickListener(View -> {
 
                 new AlertDialog.Builder(adapter.context)
@@ -63,6 +82,14 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
                         .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
+                                vennid = adapter.venner.get(getAdapterPosition()).getId();
+                                vennNavn = adapter.venner.get(getAdapterPosition()).getNavn();
+                                venntlfnr = adapter.venner.get(getAdapterPosition()).getTelefonnummer();
+                                dataKilde = new DataKildeVenner(adapter.context);
+                                dataKilde.open();
+                                dataKilde.slettVenn(vennid);
+
                                 adapter.venner.remove(getAdapterPosition());
                                 adapter.notifyItemRemoved(getAdapterPosition());
                             }
@@ -77,17 +104,37 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
 
             });
 
+            itemView.findViewById(R.id.oppdater).setOnClickListener(View -> {
+
+                new AlertDialog.Builder(adapter.context)
+                        .setMessage("Sikker på å oppdatere?")
+                        .setCancelable(false)
+                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(adapter.context, OppdaterVenner.class);
+                                intent.putExtra("id",adapter.venner.get(getAdapterPosition()).getId());
+                                adapter.context.startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("Nei", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .show();
+
+            });
+
         }
+
+
 
         public MyViewHolder linkAdpater(Venner_adapter adapter){
             this.adapter = adapter;
             return this;
         }
-
-
-
-
-
 
     }
 }

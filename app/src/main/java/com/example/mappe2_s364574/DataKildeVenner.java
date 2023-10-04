@@ -11,10 +11,10 @@ import java.util.List;
 
 public class DataKildeVenner {
     private SQLiteDatabase database;
-    private DatabasehelperVenner dbHelper;
+    private DatabasehjelperVenner dbHelper;
 
     public DataKildeVenner(Context context) {
-        dbHelper = new DatabasehelperVenner(context);
+        dbHelper = new DatabasehjelperVenner(context);
     }
 
     public void open() throws SQLException {
@@ -27,12 +27,12 @@ public class DataKildeVenner {
 
     public Venner leggInnVenn(String navn, String telefonnr) {
         ContentValues values = new ContentValues();
-        values.put(DatabasehelperVenner.KOLONNE_VENN_NAVN, navn);
-        values.put(DatabasehelperVenner.KOLONNE_VENN_TLF, telefonnr);
-        long insertId = database.insert(DatabasehelperVenner.TABELL_VENNER, null,
+        values.put(DatabasehjelperVenner.KOLONNE_VENN_NAVN, navn);
+        values.put(DatabasehjelperVenner.KOLONNE_VENN_TELEFONNR, telefonnr);
+        long insertId = database.insert(DatabasehjelperVenner.TABELL_VENNER, null,
                 values);
-        Cursor cursor = database.query(DatabasehelperVenner.TABELL_VENNER, null,
-                DatabasehelperVenner.KOLONNE_ID + " = " + insertId, null, null, null, null);
+        Cursor cursor = database.query(DatabasehjelperVenner.TABELL_VENNER, null,
+                DatabasehjelperVenner.KOLONNE_ID + " = " + insertId, null, null, null, null);
         cursor.moveToFirst();
         Venner nyVenn = cursorTilVenn(cursor);
         cursor.close();
@@ -41,18 +41,18 @@ public class DataKildeVenner {
 
     private static Venner cursorTilVenn(Cursor cursor) {
         Venner venn = new Venner();
-        venn.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabasehelperVenner
+        venn.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabasehjelperVenner
                 .KOLONNE_ID)));
         venn.setNavn(cursor.getString(cursor.getColumnIndexOrThrow(
-                DatabasehelperVenner.KOLONNE_VENN_NAVN)));
+                DatabasehjelperVenner.KOLONNE_VENN_NAVN)));
         venn.setTelefonnummer(cursor.getString(cursor.getColumnIndexOrThrow(
-                DatabasehelperVenner.KOLONNE_VENN_TLF)));
+                DatabasehjelperVenner.KOLONNE_VENN_TELEFONNR)));
         return venn;
     }
 
     public List<Venner> finnAlleVenner() {
         List<Venner> venner = new ArrayList<>();
-        Cursor cursor = database.query(DatabasehelperVenner.TABELL_VENNER, null,
+        Cursor cursor = database.query(DatabasehjelperVenner.TABELL_VENNER, null,
                 null, null, null, null, null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -64,10 +64,22 @@ public class DataKildeVenner {
         return venner;
     }
 
-    public void slettVenn(long vennId) {
-        database.delete(DatabasehelperVenner.TABELL_VENNER,
-                DatabasehelperVenner.KOLONNE_ID + " =? ", new
-                        String[]{Long.toString(vennId)});
+    public void updateVenn(long id, String nyNavn, String nytlf) {
+        ContentValues values = new ContentValues();
+        values.put(DatabasehjelperVenner.KOLONNE_VENN_NAVN, nyNavn);
+        values.put(DatabasehjelperVenner.KOLONNE_VENN_TELEFONNR, nytlf);
+        database.update(DatabasehjelperVenner.TABELL_VENNER, values,
+                DatabasehjelperVenner.KOLONNE_ID + " =? ", new
+                        String[]{Long.toString(id)});
+
+    }
+
+    public void slettVenn(long id) {
+
+            database.delete(DatabasehjelperVenner.TABELL_VENNER,
+                    DatabasehjelperVenner.KOLONNE_ID + " =? ", new
+                            String[]{Long.toString(id)});
+
     }
 }
 
