@@ -48,4 +48,9 @@ public class Venner {
     public  void setTelefonnummer(String telefonnummer) {
         this.telefonnummer = telefonnummer;
     }
+
+    @Override
+    public String toString() {
+        return getNavn(); // You can add anything else like maybe getDrinkType()
+    }
 }

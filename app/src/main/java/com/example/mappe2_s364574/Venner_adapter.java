@@ -127,8 +127,6 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
 
         }
 
-
-
         public MyViewHolder linkAdpater(Venner_adapter adapter){
             this.adapter = adapter;
             return this;

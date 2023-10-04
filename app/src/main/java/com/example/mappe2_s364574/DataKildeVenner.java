@@ -41,12 +41,9 @@ public class DataKildeVenner {
 
     private static Venner cursorTilVenn(Cursor cursor) {
         Venner venn = new Venner();
-        venn.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabasehjelperVenner
-                .KOLONNE_ID)));
-        venn.setNavn(cursor.getString(cursor.getColumnIndexOrThrow(
-                DatabasehjelperVenner.KOLONNE_VENN_NAVN)));
-        venn.setTelefonnummer(cursor.getString(cursor.getColumnIndexOrThrow(
-                DatabasehjelperVenner.KOLONNE_VENN_TELEFONNR)));
+        venn.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabasehjelperVenner.KOLONNE_ID)));
+        venn.setNavn(cursor.getString(cursor.getColumnIndexOrThrow(DatabasehjelperVenner.KOLONNE_VENN_NAVN)));
+        venn.setTelefonnummer(cursor.getString(cursor.getColumnIndexOrThrow(DatabasehjelperVenner.KOLONNE_VENN_TELEFONNR)));
         return venn;
     }
 
@@ -57,7 +54,8 @@ public class DataKildeVenner {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Venner venn = cursorTilVenn(cursor);
-            venner.add(venn);
+                venner.add(venn);
+
             cursor.moveToNext();
         }
         cursor.close();
