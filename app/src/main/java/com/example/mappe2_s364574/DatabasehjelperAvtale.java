@@ -19,8 +19,7 @@ public class DatabasehjelperAvtale extends SQLiteOpenHelper {
             KOLONNE_AVTALE_NAVN + " TEXT NOT NULL, " +
             KOLONNE_AVTALE_DATO + " TEXT NOT NULL, " +
             KOLONNE_AVTALE_KLOKKE + " TEXT NOT NULL, " +
-            KOLONNE_AVTALE_STED + " TEXT NOT NULL, " +
-            ")";
+            KOLONNE_AVTALE_STED + " TEXT NOT NULL)";
     public DatabasehjelperAvtale(Context context) {
         super(context, DATABASE_NAVN, null, DATABASE_VERSION);
     }

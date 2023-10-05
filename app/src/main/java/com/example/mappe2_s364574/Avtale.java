@@ -25,6 +25,9 @@ public class Avtale {
         this.møtested = møtested;
     }
 
+    public Avtale() {
+    }
+
     public long getId() {
         return id;
     }

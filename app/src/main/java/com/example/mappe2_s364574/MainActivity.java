@@ -15,11 +15,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    ArrayList<Avtale> møter = new ArrayList<>();
+    List<Avtale> avtaler = new ArrayList<>();
+    public DataKildeAvtaler dataKilde;
 
 
     @Override
@@ -53,10 +55,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setupMøter();
 
         DateFormat dato = new SimpleDateFormat("dd.MM.yyyy");
-        Collections.sort(møter, new Comparator<Avtale>() {
+        Collections.sort(avtaler, new Comparator<Avtale>() {
             @Override
             public int compare(Avtale o1, Avtale o2) {
 
@@ -69,28 +70,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        dataKilde = new DataKildeAvtaler(this);
+        dataKilde.open();
+        avtaler = dataKilde.finnAlleAvtaler();
 
-        Møte_adapter adapter = new Møte_adapter(this, møter);
+
+        Avtaler_adapter adapter = new Avtaler_adapter(this, avtaler);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-    }
-
-    private void setupMøter(){
-        String[] navnVenner = getResources().getStringArray(R.array.navnVenner);
-        String[] datoMøte = getResources().getStringArray(R.array.datomøte);
-        String[] klokke = getResources().getStringArray(R.array.klokkeslettforMøte);
-        String[] sted = getResources().getStringArray(R.array.stedforMøte);
-
-        for(int i=0; i < navnVenner.length; i++){
-            møter.add(new Avtale(
-                    navnVenner[i],
-                    datoMøte[i],
-                    klokke[i],
-                    sted[i]));
-        }
     }
 
     public void openVenner() {

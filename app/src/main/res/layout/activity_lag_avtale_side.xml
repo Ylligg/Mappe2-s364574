@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/edittlfoppdater"
+        android:id="@+id/editDato"
         android:layout_width="254dp"
         android:layout_height="65dp"
         android:layout_marginTop="320dp"
@@ -45,40 +45,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/telefonimg"
+        android:id="@+id/datoimg"
         android:layout_width="55dp"
         android:layout_height="59dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="332dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="324dp"
         app:layout_constraintEnd_toStartOf="@+id/edittlf"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/telefon" />
+        app:srcCompat="@drawable/date" />
 
     <ImageView
         android:id="@+id/telefonimg2"
         android:layout_width="55dp"
         android:layout_height="59dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="464dp"
         app:layout_constraintEnd_toStartOf="@+id/edittlf"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/telefon" />
+        app:srcCompat="@drawable/time" />
 
     <ImageView
         android:id="@+id/telefonimg3"
         android:layout_width="55dp"
         android:layout_height="59dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="608dp"
         app:layout_constraintEnd_toStartOf="@+id/edittlf"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/telefon" />
+        app:srcCompat="@drawable/sted" />
 
     <TextView
         android:id="@+id/textView6"
@@ -132,16 +132,16 @@
         app:srcCompat="@drawable/person" />
 
     <ImageButton
-        android:id="@+id/oppdaterpersonknapp"
+        android:id="@+id/lagAvtaleknapp"
         android:layout_width="139dp"
         android:layout_height="81dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="736dp"
-        android:src="@drawable/personpin"
+        android:layout_marginTop="732dp"
+        android:src="@drawable/handshake"
         android:text="Navn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -156,7 +156,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTime"
+        android:id="@+id/editTid"
         android:layout_width="238dp"
         android:layout_height="59dp"
         android:layout_marginTop="464dp"
@@ -169,7 +169,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editSted"
         android:layout_width="259dp"
         android:layout_height="65dp"
         android:layout_marginTop="604dp"

@@ -1,6 +1,5 @@
 package com.example.mappe2_s364574;
 
-package com.example.mappe2_s364574;
 
 
 
@@ -21,41 +20,43 @@ import java.util.List;
 public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyViewHolder>{
     Context context;
 
-    public static DataKildeVenner dataKilde;
-    List<Venner> venner;
+    public static DataKildeAvtaler dataKilde;
+    List<Avtale> avtaler;
 
 
-    public Venner_adapter(Context context, List<Venner> venner){
+    public Avtaler_adapter(Context context, List<Avtale> avtaler){
         this.context = context;
-        this.venner = venner;
+        this.avtaler = avtaler;
     }
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.recycler_view_row_venner, parent, false);
+        View view = inflater.inflate(R.layout.recycler_view_row_avtaler, parent, false);
 
         return new MyViewHolder(view).linkAdpater(this);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Venner_adapter.MyViewHolder holder, int position) {
-        holder.navn.setText(venner.get(position).navn);
-        holder.tlf.setText(venner.get(position).telefonnummer);
+    public void onBindViewHolder(@NonNull Avtaler_adapter.MyViewHolder holder, int position) {
+        holder.navn.setText(avtaler.get(position).navnpåPerson);
+        holder.dato.setText(avtaler.get(position).datoforMøte);
+        holder.klokke.setText(avtaler.get(position).klokkeslettforMøte);
+        holder.sted.setText(avtaler.get(position).møtested);
 
     }
 
     @Override
     public int getItemCount() {
-        return venner.size();
+        return avtaler.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView navn,tlf;
-        private Venner_adapter adapter;
+        TextView navn,dato,klokke,sted;
+        private Avtaler_adapter adapter;
 
-        long vennid=0;
-        String vennNavn, venntlfnr;
+        long avtaleId=0;
+        String avtaleNavn, avtaleDato, avtaleKlokke, avtaleSted;
 
 
 
@@ -63,10 +64,12 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
             super(itemView);
 
             navn = itemView.findViewById(R.id.navn);
-            tlf = itemView.findViewById(R.id.tlfnr);
+            dato = itemView.findViewById(R.id.dato);
+            klokke = itemView.findViewById(R.id.klokke);
+            sted = itemView.findViewById(R.id.sted);
 
 
-            itemView.findViewById(R.id.slett).setOnClickListener(View -> {
+            itemView.findViewById(R.id.slettAvtale).setOnClickListener(View -> {
 
                 new AlertDialog.Builder(adapter.context)
                         .setMessage("Sikker på å slette denne personen?")
@@ -75,14 +78,16 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                vennid = adapter.venner.get(getAdapterPosition()).getId();
-                                vennNavn = adapter.venner.get(getAdapterPosition()).getNavn();
-                                venntlfnr = adapter.venner.get(getAdapterPosition()).getTelefonnummer();
-                                dataKilde = new DataKildeVenner(adapter.context);
+                                avtaleId = adapter.avtaler.get(getAdapterPosition()).getId();
+                                avtaleNavn = adapter.avtaler.get(getAdapterPosition()).getNavnpåPerson();
+                                avtaleDato = adapter.avtaler.get(getAdapterPosition()).getDatoforMøte();
+                                avtaleKlokke = adapter.avtaler.get(getAdapterPosition()).getKlokkeslettforMøte();
+                                avtaleSted = adapter.avtaler.get(getAdapterPosition()).getMøtested();
+                                dataKilde = new DataKildeAvtaler(adapter.context);
                                 dataKilde.open();
-                                dataKilde.slettVenn(vennid);
+                                dataKilde.slettVenn(avtaleId);
 
-                                adapter.venner.remove(getAdapterPosition());
+                                adapter.avtaler.remove(getAdapterPosition());
                                 adapter.notifyItemRemoved(getAdapterPosition());
                             }
                         })
@@ -96,7 +101,7 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
 
             });
 
-            itemView.findViewById(R.id.oppdater).setOnClickListener(View -> {
+            itemView.findViewById(R.id.oppdaterAvtale).setOnClickListener(View -> {
 
                 new AlertDialog.Builder(adapter.context)
                         .setMessage("Sikker på å oppdatere?")
@@ -105,7 +110,7 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(adapter.context, OppdaterVenner.class);
-                                intent.putExtra("id",adapter.venner.get(getAdapterPosition()).getId());
+                                intent.putExtra("id",adapter.avtaler.get(getAdapterPosition()).getId());
                                 adapter.notifyItemChanged(getAdapterPosition());
                                 adapter.context.startActivity(intent);
 
@@ -123,7 +128,7 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
 
         }
 
-        public MyViewHolder linkAdpater(Venner_adapter adapter){
+        public MyViewHolder linkAdpater(Avtaler_adapter adapter){
             this.adapter = adapter;
             return this;
         }

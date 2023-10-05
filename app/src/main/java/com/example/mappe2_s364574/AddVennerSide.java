@@ -36,7 +36,7 @@ public class AddVennerSide extends AppCompatActivity {
         TextView errornavn = findViewById(R.id.errornavn);
         TextView errortlf = findViewById(R.id.errortlf);
         ImageButton add = findViewById(R.id.addpersonknapp);
-        RecyclerView recyclerView = findViewById(R.id.rcvenner);
+
 
         dataKilde = new DataKildeVenner(this);
         dataKilde.open();
