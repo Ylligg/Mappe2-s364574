@@ -8,13 +8,13 @@ import android.widget.Spinner;
 
 import java.util.List;
 
-public class AvtaleSide extends AppCompatActivity {
+public class LagAvtaleSide extends AppCompatActivity {
     private List<Venner> vennerliste;
     public DataKildeVenner dataKilde;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_avtale_side);
+        setContentView(R.layout.activity_lag_avtale_side);
 
         dataKilde = new DataKildeVenner(this);
         dataKilde.open();
@@ -26,10 +26,6 @@ public class AvtaleSide extends AppCompatActivity {
         ArrayAdapter<Venner> adapter = new ArrayAdapter<Venner>(this, android.R.layout.simple_spinner_dropdown_item,vennerliste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
-
-
-
 
     }
 }

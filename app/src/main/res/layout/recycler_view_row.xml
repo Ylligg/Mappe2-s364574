@@ -6,11 +6,11 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="353dp"
-        android:layout_height="86dp"
+        android:layout_width="348dp"
+        android:layout_height="188dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="5dp"
         app:cardBackgroundColor="@color/blackblue"
         app:cardCornerRadius="20dp"
@@ -25,48 +25,82 @@
 
             <TextView
                 android:id="@+id/navn"
-                android:layout_width="141dp"
-                android:layout_height="68dp"
+                android:layout_width="314dp"
+                android:layout_height="29dp"
                 android:layout_marginStart="16dp"
+                android:text="Ylli GAsdhi"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.523" />
+                app:layout_constraintVertical_bias="0.1" />
 
             <TextView
                 android:id="@+id/klokke"
-                android:layout_width="65dp"
-                android:layout_height="23dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="81dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="160dp"
+                android:text="12:35"
                 android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.142" />
+                app:layout_constraintVertical_bias="0.319" />
 
             <TextView
                 android:id="@+id/sted"
-                android:layout_width="165dp"
-                android:layout_height="28dp"
-                android:layout_marginEnd="16dp"
+                android:layout_width="310dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="84dp"
+                android:text="Gransdalen"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.827" />
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/dato"
-                android:layout_width="84dp"
-                android:layout_height="21dp"
-                android:layout_marginEnd="96dp"
+                android:layout_width="91dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="244dp"
+                android:text="21.02.2002"
                 android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.169" />
+                app:layout_constraintVertical_bias="0.319" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="127dp"
+                android:layout_height="53dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/knapp_oppdater"
+                android:text="oppdater"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.884" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="129dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="120dp"
+                android:background="@drawable/knapp_slett"
+                android:text="slett"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.063"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

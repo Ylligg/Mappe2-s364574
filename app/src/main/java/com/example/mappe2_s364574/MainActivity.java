@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openAvtaler() {
         // bytter aktivitet til Sprok
-        Intent intent = new Intent(this, AvtaleSide.class);
+        Intent intent = new Intent(this, LagAvtaleSide.class);
         startActivity(intent);
     }
     public void openPref() {

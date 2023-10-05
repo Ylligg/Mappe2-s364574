@@ -37,7 +37,7 @@
         android:layout_height="65dp"
         android:layout_marginTop="320dp"
         android:ems="10"
-        android:hint="Skriv telfonnummer"
+        android:hint="Skriv inn dato"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
@@ -49,7 +49,7 @@
         android:layout_width="55dp"
         android:layout_height="59dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="332dp"
         app:layout_constraintEnd_toStartOf="@+id/edittlf"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
         android:layout_width="55dp"
         android:layout_height="59dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="636dp"
+        android:layout_marginTop="608dp"
         app:layout_constraintEnd_toStartOf="@+id/edittlf"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,7 +110,7 @@
         android:id="@+id/textView8"
         android:layout_width="109dp"
         android:layout_height="24dp"
-        android:layout_marginTop="604dp"
+        android:layout_marginTop="580dp"
         android:text="Sted"
         app:layout_constraintBottom_toTopOf="@+id/edittlf"
         app:layout_constraintEnd_toEndOf="parent"
@@ -137,13 +137,13 @@
         android:layout_height="81dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="736dp"
         android:src="@drawable/personpin"
         android:text="Navn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittlfoppdater" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -162,6 +162,7 @@
         android:layout_marginTop="464dp"
         android:ems="10"
         android:inputType="time"
+        android:hint="Skriv inn tid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
@@ -171,13 +172,13 @@
         android:id="@+id/editTextText"
         android:layout_width="259dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="212dp"
+        android:layout_marginTop="604dp"
         android:ems="10"
+        android:hint="Skriv inn møtested"
         android:inputType="text"
-        android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.572"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
