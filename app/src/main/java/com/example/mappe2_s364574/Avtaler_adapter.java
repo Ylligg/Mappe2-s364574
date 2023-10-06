@@ -109,7 +109,7 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
                         .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent intent = new Intent(adapter.context, OppdaterVenner.class);
+                                Intent intent = new Intent(adapter.context, OppdaterAvtale.class);
                                 intent.putExtra("id",adapter.avtaler.get(getAdapterPosition()).getId());
                                 adapter.notifyItemChanged(getAdapterPosition());
                                 adapter.context.startActivity(intent);

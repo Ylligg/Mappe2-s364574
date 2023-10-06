@@ -68,7 +68,7 @@ public class LagAvtaleSide extends AppCompatActivity {
                 String klokketxt = klokke.getText().toString();
                 String stedtxt = sted.getText().toString();
 
-                System.out.println(navntxt + " "+  datotxt + " "+ klokketxt + " "+ stedtxt);
+                //hvis alt felt er fylt ut så lagrer vi avtalen
                 if (!navntxt.isEmpty() && !datotxt.isEmpty() && !klokketxt.isEmpty() && !stedtxt.isEmpty()) {
                     Avtale avtale = dataKildeavtaler.leggInnAvtale(navntxt, datotxt, klokketxt, stedtxt);
                     Intent intent = new Intent(LagAvtaleSide.this, MainActivity.class);

@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        dataKilde = new DataKildeAvtaler(this);
+        dataKilde.open();
+        avtaler = dataKilde.finnAlleAvtaler();
 
         DateFormat dato = new SimpleDateFormat("dd.MM.yyyy");
         Collections.sort(avtaler, new Comparator<Avtale>() {
@@ -69,10 +72,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        dataKilde = new DataKildeAvtaler(this);
-        dataKilde.open();
-        avtaler = dataKilde.finnAlleAvtaler();
 
 
         Avtaler_adapter adapter = new Avtaler_adapter(this, avtaler);

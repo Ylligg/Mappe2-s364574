@@ -20,6 +20,9 @@
         android:theme="@style/Theme.Mappe2s364574"
         tools:targetApi="31">
         <activity
+            android:name=".OppdaterAvtale"
+            android:exported="false" />
+        <activity
             android:name=".AvtaleSideHub"
             android:exported="false" />
         <activity

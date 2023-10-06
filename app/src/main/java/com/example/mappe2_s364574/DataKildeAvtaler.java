@@ -72,7 +72,7 @@ public class DataKildeAvtaler {
         ContentValues values = new ContentValues();
         values.put(DatabasehjelperAvtale.KOLONNE_AVTALE_NAVN, nyNavn);
         values.put(DatabasehjelperAvtale.KOLONNE_AVTALE_DATO, nyDato);
-        values.put(DatabasehjelperAvtale.KOLONNE_AVTALE_KLOKKE, nyDato);
+        values.put(DatabasehjelperAvtale.KOLONNE_AVTALE_KLOKKE, nyKlokke);
         values.put(DatabasehjelperAvtale.KOLONNE_AVTALE_STED, nySted);
 
         database.update(DatabasehjelperAvtale.TABELL_AVTALE, values,
