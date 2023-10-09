@@ -1,17 +1,30 @@
 package com.example.mappe2_s364574;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -22,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     List<Avtale> avtaler = new ArrayList<>();
     public DataKildeAvtaler dataKilde;
+    int notificationtall=0;
+    public int notificationAktiv = 0;
+    public static final String SharedPref = "sharedpref";
 
 
     @Override
@@ -79,7 +95,50 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        LocalDateTime now = LocalDateTime.now();
 
+        //når klokken er 6 om morgen så vil en notifikasjon sendes til brukeren om han har noen avtaler som han har i dag
+        if(dtf.format(now).equals("06:00")){
+            noti();
+        }
+    }
+
+    public void noti(){
+
+        // Notification som sendes 1 gang i løpet av dagen
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
+        for(Avtale avtale : avtaler) {
+
+            if (avtale.datoforMøte.equals(dtf.format(now))) {
+
+                NotificationCompat.Builder notifikasjon = new NotificationCompat.Builder(MainActivity.this, "MinKanal")
+                        .setContentTitle("Du har en avtale i dag!")
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setStyle(new NotificationCompat.BigTextStyle()
+                                .bigText("Du har en avtale med " + avtale.navnpåPerson + " og dere skal møtes ved " + avtale.møtested + " klokken " + avtale.klokkeslettforMøte))
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setDefaults(NotificationCompat.DEFAULT_VIBRATE);
+
+
+                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.notify(notificationtall, notifikasjon.build());
+                notificationtall++;
+                createNotificationChannel();
+            }
+        }
+    }
+
+    private void createNotificationChannel() {
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new
+                NotificationChannel("MinKanal", "Min Kanal", importance);
+        channel.setDescription("descripUon");
+        NotificationManager notificationManager =
+                getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(channel);
     }
 
     public void openVenner() {

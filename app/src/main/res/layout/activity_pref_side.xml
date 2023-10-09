@@ -6,13 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".PrefSide">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="pref"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="58dp"
+        android:layout_height="74dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:scrollbarSize="14dp"
+        android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="256dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="104dp"
+        android:text="Sende venner en sms om avtale?"
+        android:textAlignment="inherit"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="256dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="336dp"
+        android:text="Når vil du sende meldingen?"
+        android:textAlignment="inherit"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="256dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="568dp"
+        android:text="Hva skal sms være for personen?"
+        android:textAlignment="inherit"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="251dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="Klokkeslett"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="255dp"
+        android:layout_height="70dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="SMS-Tekst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
