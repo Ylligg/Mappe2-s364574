@@ -65,12 +65,6 @@ public class MinSendService extends Service {
             }
         }
 
-        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
-        LocalDateTime nå = LocalDateTime.now();
-
-        if (time.format(nå).equals("06:00")) {
-            // send sms
-        }
 
         return super.onStartCommand(intent, flags, startId);
 

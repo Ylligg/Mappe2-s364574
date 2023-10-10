@@ -25,6 +25,7 @@ public class DataKildeAvtaler {
         dbHelper.close();
     }
 
+    // metode som legger inn avtale i db
     public Avtale leggInnAvtale(String navn, String dato, String klokke, String sted) {
 
         ContentValues values = new ContentValues();
@@ -51,7 +52,7 @@ public class DataKildeAvtaler {
         avtale.setMøtested(cursor.getString(cursor.getColumnIndexOrThrow(DatabasehjelperAvtale.KOLONNE_AVTALE_STED)));
         return avtale;
     }
-
+    // metode som finner alle avtaler fra db
     public List<Avtale> finnAlleAvtaler() {
         List<Avtale> avtaler = new ArrayList<>();
         Cursor cursor = database.query(DatabasehjelperAvtale.TABELL_AVTALE, null,
@@ -66,7 +67,7 @@ public class DataKildeAvtaler {
         cursor.close();
         return avtaler;
     }
-
+    // metode som oppdaterer avtale fra db
     public void updateAvtale(long id, String nyNavn, String nyDato, String nyKlokke, String nySted) {
 
         ContentValues values = new ContentValues();
@@ -80,8 +81,8 @@ public class DataKildeAvtaler {
                         String[]{Long.toString(id)});
 
     }
-
-    public void slettVenn(long id) {
+    // metode som sletter avtale fra db
+    public void slettAvtale(long id) {
 
         database.delete(DatabasehjelperAvtale.TABELL_AVTALE,
                 DatabasehjelperAvtale.KOLONNE_ID + " =? ", new

@@ -25,6 +25,7 @@ public class DataKildeVenner {
         dbHelper.close();
     }
 
+    // metode som legger til venn i db
     public Venner leggInnVenn(String navn, String telefonnr) {
         ContentValues values = new ContentValues();
         values.put(DatabasehjelperVenner.KOLONNE_VENN_NAVN, navn);
@@ -47,6 +48,7 @@ public class DataKildeVenner {
         return venn;
     }
 
+    // metode som henter alle venner fra db
     public List<Venner> finnAlleVenner() {
         List<Venner> venner = new ArrayList<>();
         Cursor cursor = database.query(DatabasehjelperVenner.TABELL_VENNER, null,
@@ -62,6 +64,7 @@ public class DataKildeVenner {
         return venner;
     }
 
+    // metode som oppdaterer venn fra db
     public void updateVenn(long id, String nyNavn, String nytlf) {
         ContentValues values = new ContentValues();
         values.put(DatabasehjelperVenner.KOLONNE_VENN_NAVN, nyNavn);
@@ -72,6 +75,7 @@ public class DataKildeVenner {
 
     }
 
+    // metode som sletter venn fra db
     public void slettVenn(long id) {
 
             database.delete(DatabasehjelperVenner.TABELL_VENNER,

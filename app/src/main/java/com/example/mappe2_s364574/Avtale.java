@@ -8,8 +8,7 @@ public class Avtale {
     String klokkeslettforMøte;
     String møtested;
 
-
-
+    // konstrøkører
     public Avtale(long id, String navnpåPerson, String datoforMøte, String klokkeslettforMøte, String møtested){
         this.id = id;
         this.navnpåPerson = navnpåPerson;
@@ -28,6 +27,7 @@ public class Avtale {
     public Avtale() {
     }
 
+    // getter og setters
     public long getId() {
         return id;
     }

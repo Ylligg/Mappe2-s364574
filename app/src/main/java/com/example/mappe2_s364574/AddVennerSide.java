@@ -37,12 +37,12 @@ public class AddVennerSide extends AppCompatActivity {
         TextView errortlf = findViewById(R.id.errortlf);
         ImageButton add = findViewById(R.id.addpersonknapp);
 
-
+        // åpner databasen for venner tabellen og legger verdiene i vennerarrayen
         dataKilde = new DataKildeVenner(this);
         dataKilde.open();
         vennerliste = dataKilde.finnAlleVenner();
 
-
+        // input validerer om det er skrevet noe inn, hvis ja så legger vi inn personen i databasen venner
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

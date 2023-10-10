@@ -24,7 +24,7 @@ public class LagAvtaleSide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lag_avtale_side);
 
-
+        // åpner databasen for venner tabellen og legger verdiene i vennerarrayen
         dataKildevenner = new DataKildeVenner(this);
         dataKildevenner.open();
         vennerliste = dataKildevenner.finnAlleVenner();
@@ -34,23 +34,20 @@ public class LagAvtaleSide extends AppCompatActivity {
         EditText sted = findViewById(R.id.editSted);
         Spinner spinner = findViewById(R.id.spinner);
 
-
+        // lager dropdownmeny med venner listen
         ArrayAdapter<Venner> adapter = new ArrayAdapter<Venner>(this, android.R.layout.simple_spinner_dropdown_item,vennerliste);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
 
-
         ImageButton add = findViewById(R.id.lagAvtaleknapp);
 
+        // navnet som blir valgt blir addet inn i databasen med de andre infoene
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
               valgtNavn = vennerliste.get(i).getNavn();
             }
-
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
         dataKildeavtaler = new DataKildeAvtaler(this);
@@ -58,7 +55,8 @@ public class LagAvtaleSide extends AppCompatActivity {
 
 
 
-
+        // når alt er fullt ut så kaller vi på legginnavtale fra datakildeAvtaler for å legge inn i databasen
+        // og så går vi til mainactivity
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -85,7 +85,7 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
                                 avtaleSted = adapter.avtaler.get(getAdapterPosition()).getMøtested();
                                 dataKilde = new DataKildeAvtaler(adapter.context);
                                 dataKilde.open();
-                                dataKilde.slettVenn(avtaleId);
+                                dataKilde.slettAvtale(avtaleId);
 
                                 adapter.avtaler.remove(getAdapterPosition());
                                 adapter.notifyItemRemoved(getAdapterPosition());

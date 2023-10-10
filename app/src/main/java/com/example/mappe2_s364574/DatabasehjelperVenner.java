@@ -4,7 +4,7 @@ package com.example.mappe2_s364574;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
+// oppretter database for venner
 public class DatabasehjelperVenner extends SQLiteOpenHelper {
     private static final String DATABASE_NAVN = "venner.db";
     private static final int DATABASE_VERSION = 1;

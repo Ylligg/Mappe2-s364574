@@ -33,13 +33,8 @@ import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-
     List<Avtale> avtaler = new ArrayList<>();
     public DataKildeAvtaler dataKilde;
-
-    public static final String SharedPref = "sharedpref";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +46,41 @@ public class MainActivity extends AppCompatActivity {
         Button avtalerButton = findViewById(R.id.avtalerid);
         Button preferanseerButton = findViewById(R.id.preferanserid);
 
-
+        // starter opp broadcastreceiver
         BroadcastReceiver myBroadcastReceiver = new MinBroadcastReceiver();
         IntentFilter filter = new IntentFilter("com.example.service.MITTSIGNAL");
         filter.addAction("com.example.service.MITTSIGNAL");
         this.registerReceiver(myBroadcastReceiver, filter);
+
+        // åpner databasen for avtaler for å vise de fram
+        dataKilde = new DataKildeAvtaler(this);
+        dataKilde.open();
+        avtaler = dataKilde.finnAlleAvtaler();
+
+        // sorterer avtalene utifra dato slik at den nærmeste datoen vises øverst til den med lengst dato fra i dag
+        DateFormat dato = new SimpleDateFormat("dd.MM.yyyy");
+        Collections.sort(avtaler, new Comparator<Avtale>() {
+            @Override
+            public int compare(Avtale o1, Avtale o2) {
+
+                try {
+                     int datoSort = dato.parse(o1.datoforMøte).compareTo(dato.parse(o2.datoforMøte));
+                    return datoSort;
+                } catch (ParseException e) {
+                    throw new IllegalArgumentException(e);
+                }
+            }
+        });
+
+        // setter opp listen med den sorterte arrayen av avtaler
+        Avtaler_adapter adapter = new Avtaler_adapter(this, avtaler);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // lager en kanal for notifications og starter broadcasten for å vise de fram
+        createNotificationChannel();
+        sendBroadcast();
+
 
         avtalerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,38 +103,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dataKilde = new DataKildeAvtaler(this);
-        dataKilde.open();
-        avtaler = dataKilde.finnAlleAvtaler();
-
-        DateFormat dato = new SimpleDateFormat("dd.MM.yyyy");
-        Collections.sort(avtaler, new Comparator<Avtale>() {
-            @Override
-            public int compare(Avtale o1, Avtale o2) {
-
-                try {
-                     int datoSort = dato.parse(o1.datoforMøte).compareTo(dato.parse(o2.datoforMøte));
-                    return datoSort;
-                } catch (ParseException e) {
-                    throw new IllegalArgumentException(e);
-                }
-            }
-        });
-
-
-        Avtaler_adapter adapter = new Avtaler_adapter(this, avtaler);
-
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-        LocalDateTime now = LocalDateTime.now();
-
-        //når klokken er 6 om morgen så vil en notifikasjon sendes til brukeren om han har noen avtaler som han har i dag
-
-        createNotificationChannel();
-        sendBroadcast();
-
     }
 
     public void sendBroadcast(){
@@ -129,18 +122,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openVenner() {
-        // bytter aktivitet til Sprok
+        // bytter aktivitet til vennerside
         Intent intent = new Intent(this, VennerSide.class);
         startActivity(intent);
     }
     public void openAvtaler() {
-        // bytter aktivitet til Sprok
+        // bytter aktivitet til lagavtale side
         Intent intent = new Intent(this, LagAvtaleSide.class);
         startActivity(intent);
     }
     public void openPref() {
-        // bytter aktivitet til Sprok
+        // bytter aktivitet til preferanser
         Intent intent = new Intent(this, PrefSide.class);
         startActivity(intent);
+
     }
 }

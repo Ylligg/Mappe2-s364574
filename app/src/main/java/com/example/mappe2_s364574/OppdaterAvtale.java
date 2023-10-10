@@ -60,10 +60,7 @@ public class OppdaterAvtale extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 valgtNavn = vennerliste.get(i).getNavn();
             }
-
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
         // setter verdiene i edittext for å se hva som skal endres
