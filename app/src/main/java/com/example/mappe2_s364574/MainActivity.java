@@ -10,7 +10,9 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
@@ -35,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<Avtale> avtaler = new ArrayList<>();
     public DataKildeAvtaler dataKilde;
-    int notificationtall=0;
-    public int notificationAktiv = 0;
+
     public static final String SharedPref = "sharedpref";
 
 
@@ -49,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
         Button vennerButton = findViewById(R.id.vennerid);
         Button avtalerButton = findViewById(R.id.avtalerid);
         Button preferanseerButton = findViewById(R.id.preferanserid);
+
+
+        BroadcastReceiver myBroadcastReceiver = new MinBroadcastReceiver();
+        IntentFilter filter = new IntentFilter("com.example.service.MITTSIGNAL");
+        filter.addAction("com.example.service.MITTSIGNAL");
+        this.registerReceiver(myBroadcastReceiver, filter);
 
         avtalerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,36 +106,16 @@ public class MainActivity extends AppCompatActivity {
         LocalDateTime now = LocalDateTime.now();
 
         //når klokken er 6 om morgen så vil en notifikasjon sendes til brukeren om han har noen avtaler som han har i dag
-        if(dtf.format(now).equals("06:00")){
-            noti();
-        }
+
+        createNotificationChannel();
+        sendBroadcast();
+
     }
 
-    public void noti(){
-
-        // Notification som sendes 1 gang i løpet av dagen
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDateTime now = LocalDateTime.now();
-
-        for(Avtale avtale : avtaler) {
-
-            if (avtale.datoforMøte.equals(dtf.format(now))) {
-
-                NotificationCompat.Builder notifikasjon = new NotificationCompat.Builder(MainActivity.this, "MinKanal")
-                        .setContentTitle("Du har en avtale i dag!")
-                        .setSmallIcon(R.mipmap.ic_launcher)
-                        .setStyle(new NotificationCompat.BigTextStyle()
-                                .bigText("Du har en avtale med " + avtale.navnpåPerson + " og dere skal møtes ved " + avtale.møtested + " klokken " + avtale.klokkeslettforMøte))
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setDefaults(NotificationCompat.DEFAULT_VIBRATE);
-
-
-                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                notificationManager.notify(notificationtall, notifikasjon.build());
-                notificationtall++;
-                createNotificationChannel();
-            }
-        }
+    public void sendBroadcast(){
+        Intent intent = new Intent();
+        intent.setAction("com.example.service.MITTSIGNAL");
+        sendBroadcast(intent);
     }
 
     private void createNotificationChannel() {
