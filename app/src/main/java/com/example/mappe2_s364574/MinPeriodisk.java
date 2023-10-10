@@ -18,6 +18,8 @@ public class MinPeriodisk extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
+
+    //lager en alarm for å sende notifikasjoner etter en tid (86_400_000 = 1 dag)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Calendar cal = Calendar.getInstance();
@@ -25,7 +27,7 @@ public class MinPeriodisk extends Service {
         PendingIntent pintent = PendingIntent.getService(this, 0, i, PendingIntent.FLAG_IMMUTABLE);
         AlarmManager alarm =
                 (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 86_400_000  * 1000, pintent);
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pintent);
         return super.onStartCommand(intent, flags, startId);
     }
 }

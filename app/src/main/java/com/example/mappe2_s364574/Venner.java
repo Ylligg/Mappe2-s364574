@@ -10,7 +10,7 @@ public class Venner {
 
     public Venner() {
     }
-
+    //konstrøkører
     public Venner(String navn) {
         this.navn = navn;
     }
@@ -24,6 +24,8 @@ public class Venner {
         this.navn = navn;
         this.telefonnummer = telefonnummer;
     }
+
+    // getter og settere
 
     public long getId() {
         return id;
@@ -49,8 +51,9 @@ public class Venner {
         this.telefonnummer = telefonnummer;
     }
 
+    // metode for å få navn i spinneren i avtale siden
     @Override
     public String toString() {
-        return getNavn(); // You can add anything else like maybe getDrinkType()
+        return getNavn();
     }
 }

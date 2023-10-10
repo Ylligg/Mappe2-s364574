@@ -9,10 +9,10 @@ public class MinBroadcastReceiver extends BroadcastReceiver {
 
     public MinBroadcastReceiver(){}
 
+    // starter en broadcast -> Minperodisk (alarm) -> Minsendservice (notifikasjon + sms til venn)
     @Override
     public void onReceive(Context context, Intent intent) {
             Intent i = new Intent(context, MinPeriodisk.class);
             context.startService(i);
-
     }
 }

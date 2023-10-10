@@ -17,8 +17,6 @@ import java.util.List;
 public class OppdaterVenner extends AppCompatActivity {
     public DataKildeVenner dataKilde;
     private List<Venner> vennerliste;
-    private Venner_adapter adapter;
-
     long id =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +29,13 @@ public class OppdaterVenner extends AppCompatActivity {
 
         dataKilde = new DataKildeVenner(this);
         dataKilde.open();
-
         vennerliste = dataKilde.finnAlleVenner();
 
+        // henter id som ble sendt fra venner adapter
         Bundle bundle = getIntent().getExtras();
         id = bundle.getLong("id");
 
+        // går gjennom vennerlisten og finner personen med samme id som vi skulle redigere, når vi har funnet den personen så legger vi navn og tlf i edittext for å kunne bli lettere endret
         for(Venner venn : vennerliste){
             if (venn.getId() == id){
                 navn.setText(venn.navn);
@@ -44,6 +43,7 @@ public class OppdaterVenner extends AppCompatActivity {
             }
         }
 
+        // når brukern har endret, så sendes den til updatevenn med alle parameterne og så blir brukeren sendt tilbake til venner siden
         oppdaterknapp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override

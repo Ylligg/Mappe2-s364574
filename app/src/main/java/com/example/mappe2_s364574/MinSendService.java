@@ -34,15 +34,17 @@ public class MinSendService extends Service {
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(getApplicationContext(), "I MinService", Toast.LENGTH_SHORT).show();
 
+        // åpner avtaler db for å lete etter om det er noen avtaler i dag
         dataKilde = new DataKildeAvtaler(this);
         dataKilde.open();
         avtaler = dataKilde.finnAlleAvtaler();
 
+        // finner dagen i dag
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDateTime now = LocalDateTime.now();
 
+        // ser gjennom avtaler for å se om det er noen som har avtale i dag, hvis ja så skal en notifikasjon sendes til brukeren
         for(Avtale avtale : avtaler) {
 
             if (avtale.datoforMøte.equals(dtf.format(now))) {
@@ -63,7 +65,13 @@ public class MinSendService extends Service {
             }
         }
 
-        //her blir det sendt sms også
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+        LocalDateTime nå = LocalDateTime.now();
+
+        if (time.format(nå).equals("06:00")) {
+            // send sms
+        }
+
         return super.onStartCommand(intent, flags, startId);
 
     }
