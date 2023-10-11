@@ -73,8 +73,8 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
             tlf = itemView.findViewById(R.id.tlfnr);
 
             slettmsg = itemView.getResources().getString(R.string.slettVennSafeguard);
-            slettJA = itemView.getResources().getString(R.string.slettVennJa);
-            slettNei = itemView.getResources().getString(R.string.slettVennNei);
+            slettJA = itemView.getResources().getString(R.string.slettJa);
+            slettNei = itemView.getResources().getString(R.string.slettNei);
 
             // henter slett knappen og lager en onclicklistener som lager en alert/safeguard
             itemView.findViewById(R.id.slett).setOnClickListener(View -> {
@@ -106,9 +106,9 @@ public class Venner_adapter extends RecyclerView.Adapter<Venner_adapter.MyViewHo
             });
 
             // henter fra strings
-            oppdatermsg = itemView.getResources().getString(R.string.oppdaterVennSafeguard);
-            oppdaterJA = itemView.getResources().getString(R.string.oppdaterVennJa);
-            oppdaterNei = itemView.getResources().getString(R.string.oppdaterVennNei);
+            oppdatermsg = itemView.getResources().getString(R.string.oppdaterSafeguard);
+            oppdaterJA = itemView.getResources().getString(R.string.oppdaterJa);
+            oppdaterNei = itemView.getResources().getString(R.string.oppdaterNei);
 
             itemView.findViewById(R.id.oppdater).setOnClickListener(View -> {
 

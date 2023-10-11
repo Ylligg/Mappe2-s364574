@@ -7,7 +7,7 @@
     tools:context=".PrefSide">
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/prefswitch"
         android:layout_width="58dp"
         android:layout_height="74dp"
         android:scaleX="2"
@@ -23,12 +23,12 @@
         android:id="@+id/textView9"
         android:layout_width="256dp"
         android:layout_height="73dp"
-        android:layout_marginTop="104dp"
-        android:text="Sende venner en sms om avtale?"
+        android:layout_marginTop="160dp"
+        android:text="@string/PrefSwitchTittel"
         android:textAlignment="inherit"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,12 +36,12 @@
         android:id="@+id/textView10"
         android:layout_width="256dp"
         android:layout_height="73dp"
-        android:layout_marginTop="336dp"
-        android:text="Når vil du sende meldingen?"
+        android:layout_marginTop="340dp"
+        android:text="@string/PrefKlokkeTittel"
         android:textAlignment="inherit"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,8 +49,8 @@
         android:id="@+id/textView11"
         android:layout_width="256dp"
         android:layout_height="73dp"
-        android:layout_marginTop="568dp"
-        android:text="Hva skal sms være for personen?"
+        android:layout_marginTop="504dp"
+        android:text="@string/PrefSMSTittel"
         android:textAlignment="inherit"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,26 +59,51 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTime"
-        android:layout_width="251dp"
-        android:layout_height="52dp"
+        android:id="@+id/prefeditklokke"
+        android:layout_width="252dp"
+        android:layout_height="55dp"
         android:ems="10"
+        android:hint="@string/PrefKlokkeHint"
         android:inputType="time"
-        android:hint="Klokkeslett"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="255dp"
-        android:layout_height="70dp"
+        android:id="@+id/prefeditsms"
+        android:layout_width="252dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
+        android:hint="@string/PrefSMSHint"
         android:inputType="text"
-        android:hint="SMS-Tekst"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <ImageButton
+        android:id="@+id/prefsmsknapp"
+        android:layout_width="143dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="680dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tumbsup" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="196dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/PrefTittel"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.376"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

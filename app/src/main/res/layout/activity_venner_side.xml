@@ -13,7 +13,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="80dp"
         android:textColor="@color/white"
-        android:text="Dine Venner"
+        android:text="@string/Vennerside_DineVenner"
         android:textAlignment="viewStart"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_marginTop="36dp"
         android:background="@drawable/corners_knapper"
         android:layout_marginEnd="32dp"
-        android:text="Legg Til Venner"
+        android:text="@string/Vennerside_Leggtilvenn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

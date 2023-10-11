@@ -2,10 +2,63 @@
     <string name="app_name">Mappe2-s364574</string>
 
     <string name="slettVennSafeguard">Sikker på å slette denne personen?</string>
-    <string name="slettVennJa">Ja</string>
-    <string name="slettVennNei">Nei</string>
+    <string name="slettAvtaleSafeguard">Sikker på å slette denne avtalen?</string>
+    <string name="slettJa">Ja</string>
+    <string name="slettNei">Nei</string>
 
-    <string name="oppdaterVennSafeguard">Sikker på å oppdatere?</string>
-    <string name="oppdaterVennJa">Ja</string>
-    <string name="oppdaterVennNei">Nei</string>
+    <string name="oppdaterSafeguard">Sikker på å oppdatere?</string>
+    <string name="oppdaterJa">Ja</string>
+    <string name="oppdaterNei">Nei</string>
+
+    <string name="notificationTittel">Du har en avtale i dag!</string>
+    <string name="notificationmsg1">"Du har en avtale med "</string>
+    <string name="notificationmsg2">" og dere skal møtes ved "</string>
+    <string name="notificationmsg3">" klokken "</string>
+
+    <string name="addvennererrornavn">Skriv inn et navn</string>
+    <string name="addvennererrortlf">Skriv inn et nummer</string>
+    <string name="addvennererrornavntom">""</string>
+    <string name="addvennererrortlftom">""</string>
+
+
+    <string name="Main_DineAktiveAvtaler">Dine Aktive Avtaler</string>
+    <string name="Main_VENNERTXT_BUTTON">VENNER</string>
+    <string name="Main_AVTALERTXT_BUTTON">AVTALER</string>
+    <string name="Main_PREFTXT_BUTTON">PREFERANSER</string>
+
+    <string name="Vennerside_DineVenner">Dine Venner</string>
+    <string name="Vennerside_Leggtilvenn">Legg Til Venner</string>
+
+    <string name="AddVennerside_LeggTilVenner">Legg Til Venner</string>
+    <string name="AddVennerside_navnTxt">Navn</string>
+    <string name="AddVennerside_navnHint">Skriv Navn</string>
+
+    <string name="AddVennerside_tlfTxt">Telefon</string>
+    <string name="AddVennerside_tlfHint">Skriv Telefonnummer</string>
+
+    <string name="LagAvtaleSide_Tittel">Lag Avtale</string>
+
+    <string name="LagAvtaleSide_personlabel">Person</string>
+    <string name="LagAvtaleSide_datolabel">Dato (DD.MM.YYYY)</string>
+    <string name="LagAvtaleSide_tidlabel">Tid (HH:MM)</string>
+    <string name="LagAvtaleSide_stedlabel">Sted</string>
+
+    <string name="LagAvtaleSide_datohint">Skriv inn dato</string>
+    <string name="LagAvtaleSide_tidhint">Skriv inn tid</string>
+    <string name="LagAvtaleSide_stedhint">Skriv inn møtested</string>
+
+    <string name="OppdaterVennTitel">Oppdater Venn</string>
+    <string name="OppdaterAvtaleTitel">Oppdater Avtale</string>
+
+    <string name="PrefTittel">Preferanser</string>
+    <string name="PrefSwitchTittel">Sende venner en sms om avtale?</string>
+    <string name="PrefKlokkeTittel">Når vil du sende sms?</string>
+    <string name="PrefKlokkeHint">Klokkeslett</string>
+    <string name="PrefSMSTittel">Hva skal sms-en være for personen?</string>
+    <string name="PrefSMSHint">SMS-Tekst</string>
+
+    <string name="slettknapp">SlETT</string>
+    <string name="oppdatersknapp">OPPDATER</string>
+
+
 </resources>

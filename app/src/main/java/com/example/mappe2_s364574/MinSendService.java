@@ -43,17 +43,20 @@ public class MinSendService extends Service {
         // finner dagen i dag
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDateTime now = LocalDateTime.now();
-
+        String notiTittel = getResources().getString(R.string.notificationTittel);
+        String notimsg1 = getResources().getString(R.string.notificationmsg1);
+        String notimsg2 = getResources().getString(R.string.notificationmsg2);
+        String notimsg3 = getResources().getString(R.string.notificationmsg3);
         // ser gjennom avtaler for å se om det er noen som har avtale i dag, hvis ja så skal en notifikasjon sendes til brukeren
         for(Avtale avtale : avtaler) {
 
             if (avtale.datoforMøte.equals(dtf.format(now))) {
 
                 NotificationCompat.Builder notifikasjon = new NotificationCompat.Builder(this, "MinKanal")
-                        .setContentTitle("Du har en avtale i dag!")
+                        .setContentTitle(notiTittel)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setStyle(new NotificationCompat.BigTextStyle()
-                                .bigText("Du har en avtale med " + avtale.navnpåPerson + " og dere skal møtes ved " + avtale.møtested + " klokken " + avtale.klokkeslettforMøte))
+                                .bigText(notimsg1 + avtale.navnpåPerson + notimsg2 + avtale.møtested + notimsg3 + avtale.klokkeslettforMøte))
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setDefaults(NotificationCompat.DEFAULT_VIBRATE);
 

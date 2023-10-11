@@ -47,19 +47,24 @@ public class AddVennerSide extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String navnerror = getResources().getString(R.string.addvennererrornavn);
+                String tlferror = getResources().getString(R.string.addvennererrortlf);
+                String navnerrortom = getResources().getString(R.string.addvennererrornavntom);
+                String tlferrortom = getResources().getString(R.string.addvennererrortlftom);
+
                 String navntxt = person.getText().toString();
                 String tlftxt = tlf.getText().toString();
 
                 if(navntxt.isEmpty()){
-                    errornavn.setText("Skriv inn et navn");
+                    errornavn.setText(navnerror);
                 } else{
-                    errornavn.setText("");
+                    errornavn.setText(navnerrortom);
                 }
 
                 if(tlftxt.isEmpty()){
-                    errortlf.setText("Skriv inn et nummer");
+                    errortlf.setText(tlferror);
                 } else{
-                    errortlf.setText("");
+                    errortlf.setText(tlferrortom);
                 }
 
                 if (!navntxt.isEmpty() && !tlftxt.isEmpty()) {

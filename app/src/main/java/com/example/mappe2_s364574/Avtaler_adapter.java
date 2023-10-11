@@ -58,6 +58,8 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
         long avtaleId=0;
         String avtaleNavn, avtaleDato, avtaleKlokke, avtaleSted;
 
+        String slettmsg, slettJA, slettNei,oppdatermsg, oppdaterJA, oppdaterNei;
+
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -69,12 +71,17 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
             sted = itemView.findViewById(R.id.sted);
 
 
+            slettmsg = itemView.getResources().getString(R.string.slettAvtaleSafeguard);
+            slettJA = itemView.getResources().getString(R.string.slettJa);
+            slettNei = itemView.getResources().getString(R.string.slettNei);
+
+
             itemView.findViewById(R.id.slettAvtale).setOnClickListener(View -> {
 
                 new AlertDialog.Builder(adapter.context)
-                        .setMessage("Sikker på å slette denne personen?")
+                        .setMessage(slettmsg)
                         .setCancelable(false)
-                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(slettJA, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -91,7 +98,7 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
                                 adapter.notifyItemRemoved(getAdapterPosition());
                             }
                         })
-                        .setNegativeButton("Nei", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(slettNei, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -101,12 +108,16 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
 
             });
 
+            oppdatermsg = itemView.getResources().getString(R.string.oppdaterSafeguard);
+            oppdaterJA = itemView.getResources().getString(R.string.oppdaterJa);
+            oppdaterNei = itemView.getResources().getString(R.string.oppdaterNei);
+
             itemView.findViewById(R.id.oppdaterAvtale).setOnClickListener(View -> {
 
                 new AlertDialog.Builder(adapter.context)
-                        .setMessage("Sikker på å oppdatere?")
+                        .setMessage(oppdatermsg)
                         .setCancelable(false)
-                        .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(oppdaterJA, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Intent intent = new Intent(adapter.context, OppdaterAvtale.class);
@@ -116,7 +127,7 @@ public class Avtaler_adapter extends RecyclerView.Adapter<Avtaler_adapter.MyView
 
                             }
                         })
-                        .setNegativeButton("Nei", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(oppdaterNei, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 

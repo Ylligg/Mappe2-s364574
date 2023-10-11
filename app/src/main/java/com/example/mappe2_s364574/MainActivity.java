@@ -35,6 +35,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     List<Avtale> avtaler = new ArrayList<>();
     public DataKildeAvtaler dataKilde;
+    int datoSort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +60,17 @@ public class MainActivity extends AppCompatActivity {
 
         // sorterer avtalene utifra dato slik at den nærmeste datoen vises øverst til den med lengst dato fra i dag
         DateFormat dato = new SimpleDateFormat("dd.MM.yyyy");
+
         Collections.sort(avtaler, new Comparator<Avtale>() {
             @Override
             public int compare(Avtale o1, Avtale o2) {
 
                 try {
-                     int datoSort = dato.parse(o1.datoforMøte).compareTo(dato.parse(o2.datoforMøte));
-                    return datoSort;
+                      datoSort= dato.parse(o1.datoforMøte).compareTo(dato.parse(o2.datoforMøte));
                 } catch (ParseException e) {
-                    throw new IllegalArgumentException(e);
+                    System.out.println("feil");
                 }
+                return datoSort;
             }
         });
 
