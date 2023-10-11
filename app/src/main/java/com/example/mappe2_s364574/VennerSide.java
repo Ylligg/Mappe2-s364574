@@ -23,6 +23,8 @@ public class VennerSide extends AppCompatActivity {
     public DataKildeVenner dataKilde;
     private List<Venner> vennerliste;
 
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

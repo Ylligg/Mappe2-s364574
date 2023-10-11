@@ -57,6 +57,8 @@
     <string name="PrefSMSTittel">Hva skal sms-en være for personen?</string>
     <string name="PrefSMSHint">SMS-Tekst</string>
 
+    <string name="PrefLAGRET">DATA LAGRET</string>
+
     <string name="slettknapp">SlETT</string>
     <string name="oppdatersknapp">OPPDATER</string>
 
